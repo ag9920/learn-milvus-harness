@@ -1,0 +1,37 @@
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Virtual env
+.venv/
+venv/
+
+# Milvus Lite local DB artifacts
+*.db
+*.db.lock
+
+# Coverage / reports
+.coverage
+.coverage.*
+htmlcov/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+
+# Local env files
+.env
+.env.*
+!.env.example
+
