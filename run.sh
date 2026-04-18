@@ -25,6 +25,14 @@ if missing:
 PY
 }
 
+run_cli() {
+  if [[ -n "${HF_ENDPOINT:-}" ]]; then
+    python3 cli.py "$@"
+  else
+    env -u HF_ENDPOINT python3 cli.py "$@"
+  fi
+}
+
 case "$CMD" in
   setup)
     echo "[setup] Installing/checking dependencies..."
@@ -38,7 +46,7 @@ case "$CMD" in
     echo "[run] final ${FINAL_CMD}"
     case "$FINAL_CMD" in
       index|ask|demo)
-        HF_ENDPOINT="${HF_ENDPOINT:-}" python3 cli.py final "$FINAL_CMD" "$@"
+        run_cli final "$FINAL_CMD" "$@"
         ;;
       *)
         echo "Unknown final command: $FINAL_CMD"
@@ -50,52 +58,52 @@ case "$CMD" in
   s01)
     ensure_deps
     echo "[run] study s01"
-    HF_ENDPOINT="${HF_ENDPOINT:-}" python3 cli.py study s01 "$@"
+    run_cli study s01 "$@"
     ;;
   s02)
     ensure_deps
     echo "[run] study s02"
-    HF_ENDPOINT="${HF_ENDPOINT:-}" python3 cli.py study s02 "$@"
+    run_cli study s02 "$@"
     ;;
   s03)
     ensure_deps
     echo "[run] study s03"
-    HF_ENDPOINT="${HF_ENDPOINT:-}" python3 cli.py study s03 --rebuild "$@"
+    run_cli study s03 --rebuild "$@"
     ;;
   s04)
     ensure_deps
     echo "[run] study s04"
-    HF_ENDPOINT="${HF_ENDPOINT:-}" python3 cli.py study s04 --rebuild "$@"
+    run_cli study s04 --rebuild "$@"
     ;;
   s05)
     ensure_deps
     echo "[run] study s05"
-    HF_ENDPOINT="${HF_ENDPOINT:-}" python3 cli.py study s05 --rebuild "$@"
+    run_cli study s05 --rebuild "$@"
     ;;
   s06)
     ensure_deps
     echo "[run] study s06"
-    HF_ENDPOINT="${HF_ENDPOINT:-}" python3 cli.py study s06 --rebuild "$@"
+    run_cli study s06 --rebuild "$@"
     ;;
   s07)
     ensure_deps
     echo "[run] study s07"
-    HF_ENDPOINT="${HF_ENDPOINT:-}" python3 cli.py study s07 --rebuild "$@"
+    run_cli study s07 --rebuild "$@"
     ;;
   s08)
     ensure_deps
     echo "[run] study s08"
-    HF_ENDPOINT="${HF_ENDPOINT:-}" python3 cli.py study s08 --rebuild "$@"
+    run_cli study s08 --rebuild "$@"
     ;;
   s09)
     ensure_deps
     echo "[run] study s09"
-    HF_ENDPOINT="${HF_ENDPOINT:-}" python3 cli.py study s09 --rebuild "$@"
+    run_cli study s09 --rebuild "$@"
     ;;
   s10)
     ensure_deps
     echo "[run] study s10"
-    HF_ENDPOINT="${HF_ENDPOINT:-}" python3 cli.py study s10 --rebuild "$@"
+    run_cli study s10 --rebuild "$@"
     ;;
   *)
     echo "Unknown command: $CMD"
